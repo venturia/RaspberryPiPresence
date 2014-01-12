@@ -1,0 +1,19 @@
+lo script richiede il pacchetto python RPi.GPIO che fa parte della distribuzione raspbian
+inoltre per inviare la foto e visualizzare la foto nella pagina web occorre che sia in esecuzione il daemon di motion
+
+per installare le pagine web eseguire:
+
+ sudo ./install.sh
+
+ con questo comando verra' creata, se non esiste gia', la directory "/var/apache" appartenente al gruppo "www-data" 
+ al quale verra' dato privilegio di scrittura
+
+aggiungere ai cronjob di root con il comando "sudo crontab -e" la seguente linea:
+ 
+ @reboot /home/pi/RaspberryPiPresence/scripts/presence.py "'<email-address1>,<email-address2>,...'"
+
+Ogni allarme viene registrato nel file /var/www/presenze/alarm.list
+
+
+
+
