@@ -15,8 +15,8 @@ def absence_detected(channel):
 def main():
   GPIO.setmode(GPIO.BCM)
   GPIO.setup(channel,GPIO.IN,pull_up_down=GPIO.PUD_UP)
-#  GPIO.add_event_detect(channel,GPIO.RISING,callback=presence_detected)
-  GPIO.add_event_detect(channel,GPIO.FALLING,callback=absence_detected)
+  GPIO.add_event_detect(channel,GPIO.RISING,callback=presence_detected)
+#  GPIO.add_event_detect(channel,GPIO.FALLING,callback=absence_detected)
 #  GPIO.add_event_detect(channel,GPIO.BOTH,callback=presence_absence_detected)
   start=datetime.datetime.now()
   delta=datetime.timedelta(days=1)
