@@ -95,9 +95,20 @@ Allarme <?php if(file_exists("/var/apache/enabled_alarm")) {echo "abilitato";} e
       <input onClick="return true;" type="submit" name="setalarm" value="Disabilita">
     </form>
 <?php
- exec("wget -O /dev/null http://localhost:8182/0/action/snapshot");
+ exec("pgrep -u motion motion",$dummyout,$motionrunning);
+ if($motionrunning==0) {
+    exec("wget -q -O /dev/null http://localhost:8182/0/action/snapshot");
+ }
+ else {
+    echo "motion non e' in esecuzione:  $motionrunning<BR>";
+ }
  sleep(1);
- echo "<img src='plot_from_tmp.php?file=/tmp/motion/lastsnap.jpg'/>";
+ if ( file_exists("/tmp/motion/lastsnap.jpg") ) {
+   echo "<img src='plot_from_tmp.php?file=/tmp/motion/lastsnap.jpg'/>";
+ }
+ else {
+   echo "Snapshot NON trovato<BR>";
+ }
 ?>
   </body>
 </html>
