@@ -23,7 +23,7 @@ if [ $? != 0 ]; then
   $(dirname "$(readlink -f "$0")")/message_without_snapshot.sh "$to" "$subject" "$body"
   if [ $? != 0 ]; then 
     echo "Failed to send the text-only message"
-    exit 102
+    exit 101
   fi
   exit 1
 fi
@@ -34,7 +34,7 @@ sleep 2
 
 # take the snapshot: if fail return !=0
 
-wget -O /dev/null http://localhost:8182/0/action/snapshot
+wget -q -O /dev/null http://localhost:8182/0/action/snapshot
 if [ $? != 0 ]; then 
   echo "Failed to take a snapshot"
   #send the text-only message
@@ -58,7 +58,7 @@ if [ ! `find /tmp/motion/lastsnap.jpg -mmin -1` ]; then
   $(dirname "$(readlink -f "$0")")/message_without_snapshot.sh "$to" "$subject" "$body"
   if [ $? != 0 ]; then 
     echo "Failed to send the text-only message"
-    exit 102
+    exit 103
   fi
   exit 3
 fi  
@@ -107,4 +107,4 @@ if [ $? != 0 ]; then
   exit 101
 fi
 
-
+exit 0
