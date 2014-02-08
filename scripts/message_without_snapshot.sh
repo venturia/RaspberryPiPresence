@@ -20,9 +20,11 @@ $body
 "
 } | /usr/sbin/sendmail -t -oi   # one may also use -f here to set the envelope-from
 
-if [ $? != 0 ]; then 
-  echo "Failed to send the mail message"
-  exit 101
-fi
+#if [ $? != 0 ]; then 
+#  echo "Failed to send the mail message"
+#  exit 101
+#fi
+#
+#exit 0
 
-
+exit $?

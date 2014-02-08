@@ -50,12 +50,17 @@ def main():
               alarm_file.write(" mail inviato!\n")
               timelastmail=datetime.datetime.now()
             elif(mailok < 100):
-              alarm_file.write(" mail inviato senza foto!\n")
+              alarm_comment=" mail inviato senza foto! [RC "+str(mailok)+"]\n" 
+#              alarm_comment=" mail inviato senza foto!\n" 
+              alarm_file.write(alarm_comment)
               timelastmail=datetime.datetime.now()
             else:
-              alarm_file.write(" invio mail fallito!\n")
+              alarm_comment=" invio mail fallito! [RC "+str(mailok)+"]\n" 
+#              alarm_comment=" invio mail fallito!\n" 
+              alarm_file.write(alarm_comment)
           else:
-              alarm_file.write(" mail gia' inviato...\n")
+              alarm_comment=" mail gia' inviato il "+str(timelastmail)+"\n"
+              alarm_file.write(alarm_comment)
           alarm_file.close()
 
 #       print log_message,now,future
