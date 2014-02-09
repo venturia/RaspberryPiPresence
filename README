@@ -1,5 +1,8 @@
 lo script richiede il pacchetto python RPi.GPIO che fa parte della distribuzione raspbian
 inoltre per inviare la foto e visualizzare la foto nella pagina web occorre che sia in esecuzione il daemon di motion
+richiede ssmtp che si puo' installare con:
+
+ sudo apt-get install ssmtp
 
 per installare le pagine web eseguire:
 
