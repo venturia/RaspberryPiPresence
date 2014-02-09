@@ -21,34 +21,41 @@ if(isset($_GET["setalarm"]) || isset($_POST["setalarm"])) {
   }
 }
 
-$file="/home/pi/presence_status";
-$status=exec("cat $file",$output,$retval);
-$expstatus=explode(" ",$status);
-$flag=$expstatus[count($expstatus)-1];
-$date=$expstatus[0];
-$time=$expstatus[1];
-$lastdatetime=$date . " " . $time;
-echo "Stato Sensore: " .$status . "<br>";
-$now = new DateTime("NOW");
-$lastchange = new DateTime($lastdatetime);
-$delta = $now->getTimestamp() - $lastchange->getTimestamp();
-if($flag==1) $delta=0;
 $scaleddelta=0;
-if($delta<60) {
-   $scaleddelta=$delta*200./60.;}
-else if($delta<600) {
-   $scaleddelta=200+($delta-60)*200./(600.-60.);}
-else if($delta<3600) {
-   $scaleddelta=400+($delta-600)*200./(3600.-600.);}
-else if($delta<86400) {
-   $scaleddelta=600+($delta-3600)*200./(86400.-3600.);}
-else {
-   $scaleddelta=800+($delta-86400)*200./(864000.-86400.);}
+$file="/home/pi/presence_status";
+if ( file_exists($file) ) {
+  $status=exec("cat $file",$output,$retval);
+  $expstatus=explode(" ",$status);
+  $flag=$expstatus[count($expstatus)-1];
+  $date=$expstatus[0];
+  $time=$expstatus[1];
+  $lastdatetime=$date . " " . $time;
+  echo "Stato Sensore: " .$status . "<br>";
+  $now = new DateTime("NOW");
+  $lastchange = new DateTime($lastdatetime);
+  $delta = $now->getTimestamp() - $lastchange->getTimestamp();
+  if($flag==1) $delta=0;
+  $scaleddelta=0;
+  if($delta<60) {
+     $scaleddelta=$delta*200./60.;}
+  else if($delta<600) {
+     $scaleddelta=200+($delta-60)*200./(600.-60.);}
+  else if($delta<3600) {
+     $scaleddelta=400+($delta-600)*200./(3600.-600.);}
+  else if($delta<86400) {
+     $scaleddelta=600+($delta-3600)*200./(86400.-3600.);}
+  else {
+     $scaleddelta=800+($delta-86400)*200./(864000.-86400.);}
 
-echo $delta . " " . $scaleddelta . "<br>";
+  echo $delta . " " . $scaleddelta . "<br>";
 //$delta = $now-$lastchange
 //echo $flag . " " . $time . " " . $date . " " .$delta . "<br>";
-echo "Return value: " .$retval . "<br>";
+  echo "Return value: " .$retval . "<br>";
+}
+else {
+  echo "Assente file stato sensore <br>";
+}
+
 ?>
 <html>
   <head>
