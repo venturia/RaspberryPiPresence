@@ -45,7 +45,7 @@ def main():
             mailok=999
             if(len(sys.argv) > 1):
               mail_message="/home/pi/RaspberryPiPresence/scripts/message_with_snapshot.sh "+sys.argv[1]
-              mailok = os.system(mail_message)
+              mailok = os.system(mail_message) >> 8
             if(mailok == 0):
               alarm_file.write(" mail inviato!\n")
               timelastmail=datetime.datetime.now()
@@ -62,7 +62,9 @@ def main():
               alarm_comment=" mail gia' inviato il "+str(timelastmail)+"\n"
               alarm_file.write(alarm_comment)
           alarm_file.close()
-
+          status=GPIO.input(channel)
+          if(status == 0):
+             continue
 #       print log_message,now,future
 #       time.sleep(1.)
        now=datetime.datetime.now()
