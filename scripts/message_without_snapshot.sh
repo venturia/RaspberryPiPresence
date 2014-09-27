@@ -16,6 +16,7 @@ body=$3
  
 printf '%s\n' "To: $to
 Subject: $subject
+
 $body
 "
 } | /usr/sbin/sendmail -t -oi   # one may also use -f here to set the envelope-from

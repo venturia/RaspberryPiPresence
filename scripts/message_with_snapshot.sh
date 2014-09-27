@@ -70,12 +70,12 @@ printf '%s\n' "To: $to
 Subject: $subject
 Mime-Version: 1.0
 Content-Type: multipart/mixed; boundary=\"$boundary\"
- 
+
 --${boundary}
 Content-Type: text/plain; charset=\"US-ASCII\"
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
- 
+
 $body
 "
  
