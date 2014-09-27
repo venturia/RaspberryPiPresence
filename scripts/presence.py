@@ -74,15 +74,17 @@ def main():
      print "Program interrupted"
   
   except:
-     print "Program aborted"
+     print "Program aborted with unexpected error: ", sys.exc_info()[0]
 
   finally:
      GPIO.cleanup()
      print "GPIO cleanup"
+# this is not nice since I can be in finally even without any exception
+     raise
  
 #  print GPIO.VERSION	
-  print "Program is ending: GPIO cleanup"
-  GPIO.cleanup()
+  print "Program is ending: GPIO should have been already cleaned up"
+#  GPIO.cleanup()
 if __name__ == "__main__":
    main()
 
