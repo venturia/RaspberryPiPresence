@@ -1,4 +1,4 @@
-lo script richiede il pacchetto python RPi.GPIO che fa parte della distribuzione raspbian
+lo script richiede il pacchetto python RPi.GPIO che fa parte della distribuzione raspbian, apache e php per apache
 inoltre per inviare la foto e visualizzare la foto nella pagina web occorre che sia in esecuzione il daemon di motion
 richiede ssmtp che si puo' installare con:
 
