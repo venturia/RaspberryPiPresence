@@ -1,3 +1,4 @@
+<meta name = "viewport" content = "width = device-width">
 <H1>Presenze in Sala</H1>
 <?php
 //ini_set('display_errors', 'On');
@@ -104,7 +105,7 @@ Allarme <?php if(file_exists("/var/apache/enabled_alarm")) {echo "abilitato";} e
 <?php
  exec("pgrep -u motion motion",$dummyout,$motionrunning);
  if($motionrunning==0) {
-    exec("wget -q -O /dev/null http://localhost:8182/0/action/snapshot");
+    exec("wget -q -O /dev/null http://localhost:MOTIONCTRLPORT/0/action/snapshot");
  }
  else {
     echo "motion non e' in esecuzione:  $motionrunning<BR>";

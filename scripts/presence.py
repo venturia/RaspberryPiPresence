@@ -43,8 +43,8 @@ def main():
 #            mail_message="/usr/sbin/sendmail -t < /home/pi/RaspberryPiPresence/presenze_message.txt"
 #            mail_message=os.path.dirname(sys.path[0])+"/message_with_snapshot.sh"
             mailok=999
-            if(len(sys.argv) > 1):
-              mail_message="/home/pi/RaspberryPiPresence/scripts/message_with_snapshot.sh "+sys.argv[1]
+            if(len(sys.argv) > 2):
+              mail_message="/home/pi/RaspberryPiPresence/scripts/message_with_snapshot.sh "+sys.argv[1]+" "+sys.argv[2]
               mailok = os.system(mail_message) >> 8
             if(mailok == 0):
               alarm_file.write(" mail inviato!\n")

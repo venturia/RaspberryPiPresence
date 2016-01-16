@@ -6,14 +6,14 @@ richiede ssmtp che si puo' installare con:
 
 per installare le pagine web eseguire:
 
- sudo ./install.sh
+ sudo ./install.sh <motion control port>
 
  con questo comando verra' creata, se non esiste gia', la directory "/var/apache" appartenente al gruppo "www-data" 
  al quale verra' dato privilegio di scrittura
 
 aggiungere ai cronjob di root con il comando "sudo crontab -e" la seguente linea:
  
- @reboot /home/pi/RaspberryPiPresence/scripts/presence.py "'<email-address1>,<email-address2>,...'"
+ @reboot /home/pi/RaspberryPiPresence/scripts/presence.py "'<email-address1>,<email-address2>,...'" <motion control port>
 
 Ogni allarme viene registrato nel file /var/www/presenze/alarm.list
 

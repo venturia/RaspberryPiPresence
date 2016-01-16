@@ -8,6 +8,7 @@
  
 #from="sender@example.com"
 to=$1
+motionport=$2
 subject="[${HOSTNAME}] Rilevata presenza"
 boundary="ZZ_/afg6432dfgkl.94531q"
 body="Rilevata presenza"
@@ -34,7 +35,7 @@ sleep 2
 
 # take the snapshot: if fail return !=0
 
-wget -q -O /dev/null http://localhost:8182/0/action/snapshot
+wget -q -O /dev/null http://localhost:${motionport}/0/action/snapshot
 if [ $? != 0 ]; then 
   echo "Failed to take a snapshot"
   #send the text-only message

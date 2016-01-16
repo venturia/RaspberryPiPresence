@@ -18,7 +18,8 @@ then
 fi
 
 echo "copying php scripts"
-cp -v webpages/*.php ${WEBDIR}/presenze/.
+sed 's/MOTIONCTRLPORT/'${1}'/g' webpages/presenze.php > ${WEBDIR}/presenze/presenze.php
+cp -v webpages/plot_from_tmp.php ${WEBDIR}/presenze/.
 
 
 # create the /var/apache directory if it does not exist and set the proper authorization
