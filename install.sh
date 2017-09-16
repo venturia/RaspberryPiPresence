@@ -1,7 +1,13 @@
 #!/bin/bash
 
-WEBDIR=/var/www
+WEBDIR=/var/www/html
 ALARMDIR=/var/apache
+
+read -p "web server file directory [$WEBDIR]" chosenwebdir
+
+if [ ${#chosenwebdir} != 0 ]; then
+  WEBDIR=$chosenwebdir
+fi
 
 # copy the web pages in the web server subdirectory "presenze"
 
