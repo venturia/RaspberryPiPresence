@@ -19,7 +19,7 @@ aggiungere ai cronjob di root con il comando "sudo crontab -e" la seguente linea
  
  @reboot /home/pi/RaspberryPiPresence/scripts/presence.py "'<email-address1>,<email-address2>,...'" <motion control port>
 
-Ogni allarme viene registrato nel file /var/www/presenze/alarm.list
+Ogni allarme viene registrato nel file /var/[html]/www/presenze/alarm.list
 
 
 
